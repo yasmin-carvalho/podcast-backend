@@ -1,5 +1,7 @@
 import { Router } from "express";
-import { SettingsControler } from "./controlers/SettingsControler";
+import { MessagesController } from "./controlers/MessagesController";
+import { SettingsController } from "./controlers/SettingsController";
+import { UsersController } from "./controlers/UsersController";
 
 const routes = Router();
 
@@ -15,9 +17,16 @@ const routes = Router();
  * }
  */
 
-const settingsControler = new SettingsControler();
+const settingsControler = new SettingsController();
+const usersController = new UsersController();
+const messagesController = new MessagesController();
 
 routes.post("/settings", settingsControler.create);
-    
+
+routes.post("/users", usersController.create);  
+
+routes.post("/messages", messagesController.create);
+routes.get("/messages/:id", messagesController.showByUser); 
+
 
 export { routes };
