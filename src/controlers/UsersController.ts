@@ -12,6 +12,7 @@ class UsersController {
 
         return response.json(user);
     }
+
 }
 
 export { UsersController }
